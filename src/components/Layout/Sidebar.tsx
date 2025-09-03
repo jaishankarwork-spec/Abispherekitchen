@@ -30,6 +30,7 @@ export function Sidebar({ activeTab, onTabChange, isOpen, onClose, isMobile }: S
     { id: 'kitchen-inventory', label: 'Kitchen Inventory', icon: Package, roles: ['kitchen_staff'] },
     { id: 'kitchen', label: 'Kitchen', icon: ChefHat, roles: ['admin', 'kitchen_staff'] },
     { id: 'recipes', label: 'Recipes', icon: ChefHat, roles: ['admin'] },
+    { id: 'products-sales', label: 'Products & Sales', icon: ShoppingCart, roles: ['admin', 'inventory_manager'] },
     { id: 'orders', label: 'Orders', icon: ShoppingCart, roles: ['admin', 'kitchen_staff', 'delivery_staff'] },
     { id: 'delivery', label: 'Delivery Tracking', icon: Truck, roles: ['admin'] },
     { id: 'customers', label: 'Customers', icon: Users, roles: ['admin'] },

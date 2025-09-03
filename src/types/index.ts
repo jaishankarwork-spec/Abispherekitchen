@@ -141,3 +141,46 @@ export interface StockMovement {
   movementDate: string;
   createdAt: string;
 }
+
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  sku: string;
+  category: string;
+  unit: string;
+  currentStock: number;
+  minStock: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface PurchaseTransaction {
+  id: string;
+  productId: string;
+  supplierName: string;
+  quantity: number;
+  purchasePrice: number;
+  totalCost: number;
+  purchaseDate: string;
+  invoiceNumber?: string;
+  notes: string;
+  createdAt: string;
+}
+
+export interface SaleTransaction {
+  id: string;
+  productId: string;
+  customerName: string;
+  customerPhone: string;
+  customerEmail?: string;
+  quantity: number;
+  salePrice: number;
+  totalAmount: number;
+  profitMargin: number;
+  saleDate: string;
+  paymentMethod: 'cash' | 'card' | 'online' | 'credit';
+  notes: string;
+  createdAt: string;
+}

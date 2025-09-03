@@ -459,6 +459,132 @@ export interface Database {
           updated_at?: string;
         };
       };
+      products: {
+        Row: {
+          id: string;
+          name: string;
+          description: string;
+          sku: string;
+          category: string;
+          unit: string;
+          current_stock: number;
+          min_stock: number;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          description?: string;
+          sku: string;
+          category: string;
+          unit: string;
+          current_stock?: number;
+          min_stock?: number;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          description?: string;
+          sku?: string;
+          category?: string;
+          unit?: string;
+          current_stock?: number;
+          min_stock?: number;
+          is_active?: boolean;
+          created_at?: string;
+          updated_at?: string;
+        };
+      };
+      purchase_transactions: {
+        Row: {
+          id: string;
+          product_id: string;
+          supplier_name: string;
+          quantity: number;
+          purchase_price: number;
+          total_cost: number;
+          purchase_date: string;
+          invoice_number: string | null;
+          notes: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          product_id: string;
+          supplier_name: string;
+          quantity: number;
+          purchase_price: number;
+          total_cost: number;
+          purchase_date?: string;
+          invoice_number?: string | null;
+          notes?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          product_id?: string;
+          supplier_name?: string;
+          quantity?: number;
+          purchase_price?: number;
+          total_cost?: number;
+          purchase_date?: string;
+          invoice_number?: string | null;
+          notes?: string;
+          created_at?: string;
+        };
+      };
+      sale_transactions: {
+        Row: {
+          id: string;
+          product_id: string;
+          customer_name: string;
+          customer_phone: string;
+          customer_email: string | null;
+          quantity: number;
+          sale_price: number;
+          total_amount: number;
+          profit_margin: number;
+          sale_date: string;
+          payment_method: 'cash' | 'card' | 'online' | 'credit';
+          notes: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          product_id: string;
+          customer_name: string;
+          customer_phone: string;
+          customer_email?: string | null;
+          quantity: number;
+          sale_price: number;
+          total_amount?: number;
+          profit_margin?: number;
+          sale_date?: string;
+          payment_method?: 'cash' | 'card' | 'online' | 'credit';
+          notes?: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          product_id?: string;
+          customer_name?: string;
+          customer_phone?: string;
+          customer_email?: string | null;
+          quantity?: number;
+          sale_price?: number;
+          total_amount?: number;
+          profit_margin?: number;
+          sale_date?: string;
+          payment_method?: 'cash' | 'card' | 'online' | 'credit';
+          notes?: string;
+          created_at?: string;
+        };
+      };
     };
   };
 }

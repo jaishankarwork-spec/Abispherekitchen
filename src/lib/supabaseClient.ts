@@ -564,6 +564,149 @@ export class DatabaseService {
     if (error) throw error;
     return data;
   }
+
+  // Products
+  static async getProducts() {
+    if (!this.isConnected()) {
+      throw new Error('Supabase not configured - missing environment variables');
+    }
+    
+    try {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .order('name');
+      
+      if (error) {
+        console.error('Supabase products query error:', error);
+        throw error;
+      }
+      return data || [];
+    } catch (error) {
+      console.error('Database products load failed:', error);
+      throw error;
+    }
+  }
+
+  static async addProduct(product: any) {
+    if (!supabase) {
+      throw new Error('Database not configured');
+    }
+    
+    const { data, error } = await supabase
+      .from('products')
+      .insert([product])
+      .select()
+      .single();
+    
+    if (error) throw error;
+    return data;
+  }
+
+  static async updateProduct(id: string, updates: any) {
+    if (!supabase) {
+      throw new Error('Database not configured');
+    }
+    
+    const { data, error } = await supabase
+      .from('products')
+      .update(updates)
+      .eq('id', id)
+      .select()
+      .single();
+    
+    if (error) throw error;
+    return data;
+  }
+
+  static async deleteProduct(id: string) {
+    if (!supabase) {
+      throw new Error('Database not configured');
+    }
+    
+    const { error } = await supabase
+      .from('products')
+      .delete()
+      .eq('id', id);
+    
+    if (error) throw error;
+  }
+
+  // Purchase Transactions
+  static async getPurchaseTransactions() {
+    if (!this.isConnected()) {
+      throw new Error('Supabase not configured - missing environment variables');
+    }
+    
+    try {
+      const { data, error } = await supabase
+        .from('purchase_transactions')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Supabase purchase transactions query error:', error);
+        throw error;
+      }
+      return data || [];
+    } catch (error) {
+      console.error('Database purchase transactions load failed:', error);
+      throw error;
+    }
+  }
+
+  static async addPurchaseTransaction(transaction: any) {
+    if (!supabase) {
+      throw new Error('Database not configured');
+    }
+    
+    const { data, error } = await supabase
+      .from('purchase_transactions')
+      .insert([transaction])
+      .select()
+      .single();
+    
+    if (error) throw error;
+    return data;
+  }
+
+  // Sale Transactions
+  static async getSaleTransactions() {
+    if (!this.isConnected()) {
+      throw new Error('Supabase not configured - missing environment variables');
+    }
+    
+    try {
+      const { data, error } = await supabase
+        .from('sale_transactions')
+        .select('*')
+        .order('created_at', { ascending: false });
+      
+      if (error) {
+        console.error('Supabase sale transactions query error:', error);
+        throw error;
+      }
+      return data || [];
+    } catch (error) {
+      console.error('Database sale transactions load failed:', error);
+      throw error;
+    }
+  }
+
+  static async addSaleTransaction(transaction: any) {
+    if (!supabase) {
+      throw new Error('Database not configured');
+    }
+    
+    const { data, error } = await supabase
+      .from('sale_transactions')
+      .insert([transaction])
+      .select()
+      .single();
+    
+    if (error) throw error;
+    return data;
+  }
 }
 
 // Real-time subscription helpers
